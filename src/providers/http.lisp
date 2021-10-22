@@ -22,3 +22,13 @@
         (error (response-error decoded-response))
         ;; ignore the rest of the response and return the result
         (cdr (assoc :result decoded-response)))))
+
+(defmethod handle-batch-response ((provider HTTPProvider) response)
+  (let ((decoded-response-list (destructure-response provider response)))
+    ;; check for errors
+    (if (response-error decoded-response-list)
+        (error (response-error decoded-response-list))
+        ;; ignore the rest of the response and return the result
+        (mapcar #'(lambda (decoded-response)
+                    (cdr (assoc :result decoded-response)))
+                decoded-response-list))))
