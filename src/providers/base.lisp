@@ -10,6 +10,10 @@
   ((uri :initarg :uri
         :accessor provider-uri)))
 
+(defmethod print-object ((provider BaseProvider) stream)
+  (print-unreadable-object (provider stream :type t :identity t)
+    (format stream ":uri ~S" (slot-value provider 'uri))))
+
 (defgeneric make-request (provider method params)
   (:documentation ""))
 

@@ -6,7 +6,8 @@
 
   ;; providers
   (:export #:HTTPProvider
-           #:IPCProvider)
+           #:IPCProvider
+           #:provider-uri)
 
   ;; maker function  ;; todo maybe the function name need rethink
   (:export #:make-transaction-object
