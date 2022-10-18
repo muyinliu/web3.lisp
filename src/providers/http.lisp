@@ -30,7 +30,11 @@
   (let ((decoded-response (destructure-response provider response)))
     ;; check for errors
     (if (response-error decoded-response)
-        (error (response-error decoded-response))
+        (let ((response-error (response-error decoded-response)))
+          (error 'web3-error
+                 :code (error-code response-error)
+                 :message (error-message response-error)
+                 :response (json:encode-json-to-string decoded-response)))
         ;; ignore the rest of the response and return the result
         (cdr (assoc :result decoded-response)))))
 

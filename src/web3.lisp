@@ -6,6 +6,12 @@
 (defun response-error (response)
   (cdr (assoc :error response)))
 
+(defun error-code (response-error)
+  (cdr (assoc :code response-error)))
+
+(defun error-message (response-error)
+  (cdr (assoc :message response-error)))
+
 ;; Help set fileds to hash table
 ;; generate code like below, according to required fields or optional fileds
 ;; (LET (#:G767 (MAKE-HASH-TABLE :TEST 'EQUAL))

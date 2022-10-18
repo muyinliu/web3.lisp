@@ -17,11 +17,15 @@
                #:flexi-streams
                #:iolib)
   :components ((:file "package")
+               (:file "src/providers/conditions" :depends-on ("package"))
                (:file "src/providers/base" :depends-on ("package"))
-               (:file "src/providers/http" :depends-on ("package" "src/providers/base"))
-               (:file "src/providers/ipc" :depends-on ("package" "src/providers/base"))
-               (:file "src/web3" :depends-on ("package"))
-               )
+               (:file "src/providers/http" :depends-on ("package"
+                                                        "src/providers/base"
+                                                        "src/providers/conditions"))
+               (:file "src/providers/ipc" :depends-on ("package"
+                                                       "src/providers/base"
+                                                       "src/providers/conditions"))
+               (:file "src/web3" :depends-on ("package")))
   :description ""
   :long-description
   #.(read-file-string

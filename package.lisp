@@ -10,6 +10,10 @@
            #:provider-uri
            #:proxy
            #:handle-batch-response)
+  (:export #:web3-error
+           #:code
+           #:message
+           #:response)
 
   ;; maker function  ;; todo maybe the function name need rethink
   (:export #:make-transaction-object
@@ -18,7 +22,7 @@
            #:make-filter-object
            #:make-filter-object2
            #:make-filter-object3
-           #:make-whisper-object)  
+           #:make-whisper-object)
 
   ;; interfaces
   (:export #:web3/client-version
