@@ -70,6 +70,8 @@
            #:eth/submit-work
            #:eth/submit-hashrate
            #:eth/get-proof
+           #:debug/trace-transaction
+           #:debug/trace-block-by-number
            #:db/put-string
            #:db/get-string
            #:db/put-hex

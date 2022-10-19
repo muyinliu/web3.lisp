@@ -187,6 +187,10 @@
 (defendpoint "eth_submitHashrate" hashrate/udata-32bytes id/udata-32bytes)
 (defendpoint "eth_getProof" address/udata-20bytes keys/array-32bytes block/quantity/tag)
 
+;; debug
+(defendpoint "debug_traceTransaction" transaction-hash/udata-32bytes options)
+(defendpoint "debug_traceBlockByNumber" block/quantity/tag options)
+
 ;; Deprecated
 ;; db
 ;; (defendpoint "db_putString" dbname/string keyname/string string-to-store/string)
