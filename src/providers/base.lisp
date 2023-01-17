@@ -39,13 +39,14 @@
 
 (defmethod construct-batch-body ((provider JSONBaseProvider) methods params-list)
   (cl-json:encode-json-to-string
-   (mapcar #'(lambda (method params)
+   (mapcar #'(lambda (method params id)
                `(("jsonrpc" . "2.0")
                  ("method" . ,method)
                  ("params" . ,params)
-                 ("id" . 1)))  ;; TODO assume id 1 here, but will be moved to JSONbaseprovider and set auto
+                 ("id" . ,id)))
            methods
-           params-list)))
+           params-list
+           (loop for i from 0 below (length methods) collect i))))
 
 (defmethod destructure-response ((provider JSONBaseProvider) (response string))
   (cl-json:decode-json-from-string response))
